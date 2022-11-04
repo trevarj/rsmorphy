@@ -1,15 +1,12 @@
-use std::{borrow::Cow, fmt};
+use std::borrow::Cow;
+use std::fmt;
 
-use crate::{
-    analyzer::MorphAnalyzer,
-    container::{
-        abc::*,
-        paradigm::ParadigmId,
-        stack::{StackAffix, StackSource},
-        Lex, Score,
-    },
-    opencorpora::OpencorporaTagReg,
-};
+use crate::analyzer::MorphAnalyzer;
+use crate::container::abc::*;
+use crate::container::paradigm::ParadigmId;
+use crate::container::stack::{StackAffix, StackSource};
+use crate::container::{Lex, Score};
+use crate::opencorpora::OpencorporaTagReg;
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct StackHyphenated {
@@ -152,8 +149,8 @@ impl MorphySerde for StackHyphenated {
         //                    DecodeError::DoesntMatch => DecodeError::UnknownPartType,
         //                    _ => e,
         //                })?;
-        //                let (s, word) = take_str_until_char_is(follow_str(s, ":")?, ';')?;
-        //                Ok((s, HyphenSeparatedParticle {
+        //                let (s, word) = take_str_until_char_is(follow_str(s, ":")?,
+        // ';')?;                Ok((s, HyphenSeparatedParticle {
         //                    particle: word.to_string(),
         //                }))
         //            })(s) {

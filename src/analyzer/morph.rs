@@ -1,11 +1,9 @@
 use std::path::Path;
 
-use crate::{
-    analyzer::units::*,
-    container::{ParseResult, SeenSet},
-    estimator::SingleTagProbabilityEstimator,
-    opencorpora::dictionary::Dictionary,
-};
+use crate::analyzer::units::*;
+use crate::container::{ParseResult, SeenSet};
+use crate::estimator::SingleTagProbabilityEstimator;
+use crate::opencorpora::dictionary::Dictionary;
 
 #[derive(Debug, Default, Clone)]
 pub struct Units {

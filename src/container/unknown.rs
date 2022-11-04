@@ -1,10 +1,13 @@
-use std::{borrow::Cow, fmt};
+use std::borrow::Cow;
+use std::fmt;
 
-use crate::{
-    analyzer::MorphAnalyzer,
-    container::{abc::*, decode::*, paradigm::ParadigmId, stack::StackSource, Lex, Score},
-    opencorpora::tag::OpencorporaTagReg,
-};
+use crate::analyzer::MorphAnalyzer;
+use crate::container::abc::*;
+use crate::container::decode::*;
+use crate::container::paradigm::ParadigmId;
+use crate::container::stack::StackSource;
+use crate::container::{Lex, Score};
+use crate::opencorpora::tag::OpencorporaTagReg;
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct Unknown {
@@ -88,11 +91,8 @@ impl MorphySerde for Unknown {
     fn decode(s: &str) -> Result<(&str, Self), DecodeError> {
         let s = follow_str(s, "u").map_err(|_| DecodeError::UnknownPartType)?;
         let (s, word) = take_str_until_char_is(follow_str(s, ":")?, ';')?;
-        Ok((
-            s,
-            Unknown {
-                word_lower: unescape(word).collect(),
-            },
-        ))
+        Ok((s, Unknown {
+            word_lower: unescape(word).collect(),
+        }))
     }
 }

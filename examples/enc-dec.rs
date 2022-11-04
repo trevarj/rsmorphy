@@ -1,6 +1,5 @@
 extern crate rsmorphy;
 
-use dict_ru;
 use rsmorphy::prelude::*;
 
 pub mod util;
@@ -14,7 +13,7 @@ fn table(morph: &MorphAnalyzer, s: &str) {
         let decoded = Parsed {
             lex: dec,
             score: parsed.score,
-        }; //dec.score()
+        }; // dec.score()
         assert_eq!(s, "");
         print_row_parsed(morph, i, &parsed);
         print_row_parsed(morph, i, &decoded);

@@ -1,11 +1,9 @@
-/*
-    Ожидаемые варианты стека без учёта сдвоенных слов:
-    * Dictionary[, KnownPrefix|UnknownPrefix][, HyphenSeparatedParticle]
-    * FakeDictionary[, KnownSuffix][, HyphenSeparatedParticle]
-    * Shaped[, HyphenSeparatedParticle]
-    * Unknown[, HyphenSeparatedParticle]
-    * Initials
-*/
+// Ожидаемые варианты стека без учёта сдвоенных слов:
+// Dictionary[, KnownPrefix|UnknownPrefix][, HyphenSeparatedParticle]
+// FakeDictionary[, KnownSuffix][, HyphenSeparatedParticle]
+// Shaped[, HyphenSeparatedParticle]
+// Unknown[, HyphenSeparatedParticle]
+// Initials
 pub mod affix;
 pub mod hsp;
 pub mod hword;

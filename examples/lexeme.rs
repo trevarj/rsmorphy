@@ -3,7 +3,6 @@ extern crate rsmorphy;
 use std::collections::BTreeSet;
 use std::iter::FromIterator;
 
-use dict_ru;
 use rsmorphy::prelude::*;
 
 pub mod util;

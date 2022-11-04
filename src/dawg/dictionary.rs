@@ -1,4 +1,6 @@
-use std::{fs::File, io::Read, path::Path};
+use std::fs::File;
+use std::io::Read;
+use std::path::Path;
 
 use boolinator::Boolinator;
 use byteorder::{LittleEndian, ReadBytesExt};
@@ -47,7 +49,8 @@ impl Dictionary {
         units::value(self.units[value_index as usize])
     }
 
-    /// Gets a value from a given index if a given index is related to the end of a key.
+    /// Gets a value from a given index if a given index is related to the end
+    /// of a key.
     pub fn try_value(&self, index: u32) -> Option<u32> {
         self.has_value(index).as_some_from(|| self.value(index))
     }

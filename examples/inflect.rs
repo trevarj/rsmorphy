@@ -1,19 +1,19 @@
 extern crate rsmorphy;
 
-use dict_ru;
 use rsmorphy::prelude::*;
 
 pub mod util;
 
-//use util::print_row_lex;
+// use util::print_row_lex;
 
 fn main() {
     let morph_ru = MorphAnalyzer::from_file(dict_ru::DICT_PATH);
 
-    //let lex = Lex::from_id(&morph_ru, "ru:d:стали,388,4").unwrap();
-    //print_row_lex(&morph_ru, 0, &lex.inflect(&morph_ru, &GrammemeSet::from_str("plur,ablt")).unwrap());
-    //print_row_lex(&morph_ru, 1, &lex.inflect(&morph_ru, &GrammemeSet::from_str("femn,sing,ablt,V-ey")).unwrap());
-    //println!();
+    // let lex = Lex::from_id(&morph_ru, "ru:d:стали,388,4").unwrap();
+    // print_row_lex(&morph_ru, 0, &lex.inflect(&morph_ru,
+    // &GrammemeSet::from_str("plur,ablt")).unwrap()); print_row_lex(&morph_ru,
+    // 1, &lex.inflect(&morph_ru,
+    // &GrammemeSet::from_str("femn,sing,ablt,V-ey")).unwrap()); println!();
 
     let apple = Lex::from_id(&morph_ru, "ru:d:яблоко,22c").unwrap();
     let bread = Lex::from_id(&morph_ru, "ru:d:хлеб,878").unwrap();
@@ -58,9 +58,10 @@ fn main() {
             .unwrap(),
     );
     // FIXME рыбою => рыбами
-    //println!(
+    // println!(
     //    " ::: накормил {} {} и {} {}",
-    //    2, bread.inflect(&morph_ru, &ablt_set).unwrap().get_plural(&morph_ru, 2).unwrap(),
-    //    5, fish.inflect(&morph_ru, &ablt_set).unwrap().get_plural(&morph_ru, 5).unwrap(),
+    //    2, bread.inflect(&morph_ru, &ablt_set).unwrap().get_plural(&morph_ru,
+    // 2).unwrap(),    5, fish.inflect(&morph_ru,
+    // &ablt_set).unwrap().get_plural(&morph_ru, 5).unwrap(),
     //);
 }

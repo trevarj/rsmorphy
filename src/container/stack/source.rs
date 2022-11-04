@@ -1,15 +1,12 @@
-use std::{borrow::Cow, fmt};
-
-use crate::{
-    analyzer::MorphAnalyzer,
-    container::{
-        abc::*, paradigm::ParadigmId, Dictionary, HyphenAdverb, Initials, Lex, Score, Shaped,
-        Unknown,
-    },
-    opencorpora::OpencorporaTagReg,
-};
+use std::borrow::Cow;
+use std::fmt;
 
 use self::StackSource::*;
+use crate::analyzer::MorphAnalyzer;
+use crate::container::abc::*;
+use crate::container::paradigm::ParadigmId;
+use crate::container::{Dictionary, HyphenAdverb, Initials, Lex, Score, Shaped, Unknown};
+use crate::opencorpora::OpencorporaTagReg;
 
 #[derive(Debug, Clone, PartialEq)]
 pub enum StackSource {

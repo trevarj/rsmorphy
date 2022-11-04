@@ -20,27 +20,15 @@ pub mod stack;
 
 pub mod decode;
 
-pub use self::word::WordStruct;
-
+pub use self::affix::{Affix, AffixKind};
 pub use self::dict::Dictionary;
-
-pub use self::initials::Initials;
-pub use self::initials::InitialsKind;
-
 pub use self::ha::HyphenAdverb;
 pub use self::hyphen::HyphenSeparatedParticle;
-
-pub use self::affix::Affix;
-pub use self::affix::AffixKind;
-
-pub use self::shape::ShapeKind;
-pub use self::shape::Shaped;
-
-pub use self::unknown::Unknown;
-
+pub use self::initials::{Initials, InitialsKind};
 pub use self::lex::Lex;
-pub use self::parsed::ParseResult;
-pub use self::parsed::Parsed;
+pub use self::parsed::{ParseResult, Parsed};
 pub use self::score::Score;
-pub use self::seen::Seen;
-pub use self::seen::SeenSet;
+pub use self::seen::{Seen, SeenSet};
+pub use self::shape::{ShapeKind, Shaped};
+pub use self::unknown::Unknown;
+pub use self::word::WordStruct;

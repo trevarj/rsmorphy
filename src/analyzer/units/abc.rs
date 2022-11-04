@@ -1,7 +1,5 @@
-use crate::{
-    analyzer::MorphAnalyzer,
-    container::{ParseResult, SeenSet},
-};
+use crate::analyzer::MorphAnalyzer;
+use crate::container::{ParseResult, SeenSet};
 
 pub trait AnalyzerUnit {
     fn parse(

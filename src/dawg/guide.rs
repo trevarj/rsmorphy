@@ -1,4 +1,6 @@
-use std::{fs::File, io::Read, path::Path};
+use std::fs::File;
+use std::io::Read;
+use std::path::Path;
 
 use byteorder::{LittleEndian, ReadBytesExt};
 use flate2::read::GzDecoder;
@@ -12,7 +14,7 @@ pub struct GuideEntry {
 #[derive(Debug, Clone)]
 pub struct Guide {
     /// Root index
-    root: u32,
+    pub root: u32,
     pub units: Vec<GuideEntry>,
 }
 

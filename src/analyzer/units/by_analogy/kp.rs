@@ -1,8 +1,9 @@
-use crate::{
-    analyzer::{units::abc::AnalyzerUnit, MorphAnalyzer},
-    container::{abc::*, stack::StackAffix, Affix, AffixKind, Lex, ParseResult, Parsed, SeenSet},
-    util::add_parsed_if_not_seen,
-};
+use crate::analyzer::units::abc::AnalyzerUnit;
+use crate::analyzer::MorphAnalyzer;
+use crate::container::abc::*;
+use crate::container::stack::StackAffix;
+use crate::container::{Affix, AffixKind, Lex, ParseResult, Parsed, SeenSet};
+use crate::util::add_parsed_if_not_seen;
 
 /// Parse the word by checking if it starts with a known prefix
 /// and parsing the reminder.

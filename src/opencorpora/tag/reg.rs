@@ -1,14 +1,11 @@
-use std::{
-    collections::HashSet,
-    hash::{Hash, Hasher},
-};
+use std::collections::HashSet;
+use std::hash::{Hash, Hasher};
 
 use maplit::hashset;
 
-use crate::{
-    analyzer::MorphAnalyzer,
-    opencorpora::{grammeme::GrammemeSet, kind::*},
-};
+use crate::analyzer::MorphAnalyzer;
+use crate::opencorpora::grammeme::GrammemeSet;
+use crate::opencorpora::kind::*;
 
 //#[derive(Deserialize)]
 #[derive(Debug, Clone, Eq)]
@@ -156,16 +153,16 @@ impl OpencorporaTagReg {
 }
 
 //#[cfg(test)]
-//mod tests {
+// mod tests {
 //    use opencorpora::tag::OpencorporaTagReg;
 //    use opencorpora::kind::*;
 //
 //    #[test]
 //    fn from_str() {
-//        let sample = OpencorporaTagReg::from_str("PRTF,impf,tran,past,actv anim,masc,sing,accs,Infr");
-//        let tag = OpencorporaTagReg {
-//            string: "PRTF,impf,tran,past,actv anim,masc,sing,accs,Infr".into(),
-//            pos: Some(PartOfSpeach::Prtf),
+//        let sample = OpencorporaTagReg::from_str("PRTF,impf,tran,past,actv
+// anim,masc,sing,accs,Infr");        let tag = OpencorporaTagReg {
+//            string: "PRTF,impf,tran,past,actv
+// anim,masc,sing,accs,Infr".into(),            pos: Some(PartOfSpeach::Prtf),
 //            animacy: Some(Animacy::Anim),
 //            aspect: Some(Aspect::Impf),
 //            case: Some(Case::Accs),

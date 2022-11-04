@@ -1,7 +1,6 @@
-//extern crate rustyline;
+// extern crate rustyline;
 extern crate rsmorphy;
 
-use dict_ru;
 use rsmorphy::prelude::*;
 
 pub mod util;

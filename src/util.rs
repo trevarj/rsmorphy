@@ -1,9 +1,7 @@
 use std::cmp::min;
 
-use crate::{
-    analyzer::MorphAnalyzer,
-    container::{ParseResult, Parsed, SeenSet},
-};
+use crate::analyzer::MorphAnalyzer;
+use crate::container::{ParseResult, Parsed, SeenSet};
 
 pub fn add_parsed_if_not_seen(
     morph: &MorphAnalyzer,
@@ -16,7 +14,8 @@ pub fn add_parsed_if_not_seen(
     }
 }
 
-/// Returns all splits of a `word` (taking into account `min_reminder` and `max_prefix_length`).
+/// Returns all splits of a `word` (taking into account `min_reminder` and
+/// `max_prefix_length`).
 pub fn word_splits<'w: 'i, 'i, Rem, Pref>(
     word: &'w str,
     min_reminder: Rem,

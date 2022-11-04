@@ -1,14 +1,10 @@
-use crate::{
-    analyzer::{units::abc::*, MorphAnalyzer},
-    container::{
-        abc::*, stack::StackSource, HyphenAdverb, Lex, ParseResult, Parsed, Score, SeenSet,
-        WordStruct,
-    },
-    opencorpora::{
-        kind::{Case, Number, PartOfSpeach},
-        OpencorporaTagReg,
-    },
-};
+use crate::analyzer::units::abc::*;
+use crate::analyzer::MorphAnalyzer;
+use crate::container::abc::*;
+use crate::container::stack::StackSource;
+use crate::container::{HyphenAdverb, Lex, ParseResult, Parsed, Score, SeenSet, WordStruct};
+use crate::opencorpora::kind::{Case, Number, PartOfSpeach};
+use crate::opencorpora::OpencorporaTagReg;
 
 const HA_PREFIX: &str = "по-";
 const HA_SCORE: Score = Score::Fake(0.7);
@@ -51,10 +47,14 @@ impl AnalyzerUnit for HyphenAdverbAnalyzer {
             .into_iter()
             .filter(|parsed| {
                 let tag = parsed.lex.get_tag(morph);
-                match (tag.pos, tag.number, tag.case) {
-                    (Some(PartOfSpeach::Adjf), Some(Number::Sing), Some(Case::Datv)) => true,
-                    _ => false,
-                }
+                matches!(
+                    (tag.pos, tag.number, tag.case),
+                    (
+                        Some(PartOfSpeach::Adjf),
+                        Some(Number::Sing),
+                        Some(Case::Datv)
+                    )
+                )
             })
             .for_each(|parsed: Parsed| {
                 let word = WordStruct::new(word_lower, parsed.lex.is_known());

@@ -1,10 +1,13 @@
-use std::{borrow::Cow, fmt};
+use std::borrow::Cow;
+use std::fmt;
 
-use crate::{
-    analyzer::MorphAnalyzer,
-    container::{abc::*, decode::*, paradigm::ParadigmId, stack::StackSource, Lex, Score},
-    opencorpora::OpencorporaTagReg,
-};
+use crate::analyzer::MorphAnalyzer;
+use crate::container::abc::*;
+use crate::container::decode::*;
+use crate::container::paradigm::ParadigmId;
+use crate::container::stack::StackSource;
+use crate::container::{Lex, Score};
+use crate::opencorpora::OpencorporaTagReg;
 
 const NUMBER_SCORE: Score = Score::Real(1.0);
 const DECAYED_SCORE: Score = Score::Fake(0.9);
@@ -131,22 +134,18 @@ impl MorphySerde for Shaped {
     fn encode<W: fmt::Write>(&self, f: &mut W) -> fmt::Result {
         use self::ShapeKind::*;
 
-        write!(
-            f,
-            "s:{},",
-            match self.kind {
-                Latin => "l",
-                Number { is_float } => {
-                    if is_float {
-                        "f"
-                    } else {
-                        "i"
-                    }
+        write!(f, "s:{},", match self.kind {
+            Latin => "l",
+            Number { is_float } => {
+                if is_float {
+                    "f"
+                } else {
+                    "i"
                 }
-                Punctuation => "p",
-                RomanNumber => "r",
-            },
-        )?;
+            }
+            Punctuation => "p",
+            RomanNumber => "r",
+        },)?;
         for ch in escape(&self.word) {
             write!(f, "{}", ch)?;
         }
@@ -161,19 +160,16 @@ impl MorphySerde for Shaped {
         let (s, kind) = take_1_char(s)?;
         // FIXME skip escaped ";"
         let (s, word) = take_str_until_char_is(follow_str(s, ",")?, ';')?;
-        Ok((
-            s,
-            Shaped {
-                kind: match kind {
-                    'l' => Latin,
-                    'f' => Number { is_float: true },
-                    'i' => Number { is_float: false },
-                    'p' => Punctuation,
-                    'r' => RomanNumber,
-                    _ => Err(DecodeError::UnknownPartType)?,
-                },
-                word: unescape(word).collect(),
+        Ok((s, Shaped {
+            kind: match kind {
+                'l' => Latin,
+                'f' => Number { is_float: true },
+                'i' => Number { is_float: false },
+                'p' => Punctuation,
+                'r' => RomanNumber,
+                _ => Err(DecodeError::UnknownPartType)?,
             },
-        ))
+            word: unescape(word).collect(),
+        }))
     }
 }

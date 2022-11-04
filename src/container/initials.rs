@@ -1,10 +1,13 @@
-use std::{borrow::Cow, fmt};
+use std::borrow::Cow;
+use std::fmt;
 
-use crate::{
-    analyzer::MorphAnalyzer,
-    container::{abc::*, decode::*, paradigm::ParadigmId, stack::StackSource, Lex, Score},
-    opencorpora::tag::OpencorporaTagReg,
-};
+use crate::analyzer::MorphAnalyzer;
+use crate::container::abc::*;
+use crate::container::decode::*;
+use crate::container::paradigm::ParadigmId;
+use crate::container::stack::StackSource;
+use crate::container::{Lex, Score};
+use crate::opencorpora::tag::OpencorporaTagReg;
 
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum InitialsKind {
@@ -118,14 +121,11 @@ impl MorphySerde for Initials {
             // FIXME is it proper error?
             _ => Err(DecodeError::UnknownPartType)?,
         };
-        Ok((
-            s,
-            Initials {
-                kind,
-                tag_idx,
-                letter,
-            },
-        ))
+        Ok((s, Initials {
+            kind,
+            tag_idx,
+            letter,
+        }))
     }
 }
 

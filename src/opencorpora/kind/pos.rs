@@ -96,10 +96,7 @@ impl PartOfSpeach {
     pub fn is_productive(self) -> bool {
         use self::PartOfSpeach::*;
 
-        match self {
-            Conj | Numr | Npro | Pred | Prep | Prcl | Intj => false,
-            _ => true,
-        }
+        !matches!(self, Conj | Numr | Npro | Pred | Prep | Prcl | Intj)
     }
 
     pub fn title_rus(self) -> &'static str {

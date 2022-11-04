@@ -1,9 +1,10 @@
-use crate::{
-    analyzer::{units::abc::AnalyzerUnit, MorphAnalyzer},
-    container::{abc::*, stack::StackSource, Lex, ParseResult, Parsed, SeenSet, Shaped},
-    opencorpora::OpencorporaTagReg,
-    shapes::is_latin,
-};
+use crate::analyzer::units::abc::AnalyzerUnit;
+use crate::analyzer::MorphAnalyzer;
+use crate::container::abc::*;
+use crate::container::stack::StackSource;
+use crate::container::{Lex, ParseResult, Parsed, SeenSet, Shaped};
+use crate::opencorpora::OpencorporaTagReg;
+use crate::shapes::is_latin;
 
 /// This analyzer marks latin words with "LATN" tag.
 ///

@@ -1,8 +1,8 @@
-use crate::{
-    analyzer::{units::abc::AnalyzerUnit, MorphAnalyzer},
-    container::{stack::StackSource, Lex, ParseResult, Parsed, Score, SeenSet, Unknown},
-    opencorpora::OpencorporaTagReg,
-};
+use crate::analyzer::units::abc::AnalyzerUnit;
+use crate::analyzer::MorphAnalyzer;
+use crate::container::stack::StackSource;
+use crate::container::{Lex, ParseResult, Parsed, Score, SeenSet, Unknown};
+use crate::opencorpora::OpencorporaTagReg;
 
 const SCORE: Score = Score::Fake(1.0);
 

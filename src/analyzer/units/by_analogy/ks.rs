@@ -1,13 +1,12 @@
 use std::borrow::Cow;
 
-use crate::{
-    analyzer::{units::abc::AnalyzerUnit, MorphAnalyzer},
-    container::{
-        stack::StackAffix, Affix, Dictionary, Lex, ParseResult, Parsed, Score, Seen, SeenSet,
-        WordStruct,
-    },
-    opencorpora::dictionary::{PredictionSuffixesDawg, HHH},
+use crate::analyzer::units::abc::AnalyzerUnit;
+use crate::analyzer::MorphAnalyzer;
+use crate::container::stack::StackAffix;
+use crate::container::{
+    Affix, Dictionary, Lex, ParseResult, Parsed, Score, Seen, SeenSet, WordStruct,
 };
+use crate::opencorpora::dictionary::{PredictionSuffixesDawg, HHH};
 
 /// Parse the word by checking how the words with similar suffixes
 /// are parsed.

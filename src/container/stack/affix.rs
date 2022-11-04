@@ -1,17 +1,14 @@
-use std::{borrow::Cow, fmt};
+use std::borrow::Cow;
+use std::fmt;
 
-use crate::{
-    analyzer::MorphAnalyzer,
-    container::{
-        abc::*,
-        affix::{Affix, AffixKind},
-        decode::*,
-        paradigm::ParadigmId,
-        stack::StackSource,
-        Lex, Score,
-    },
-    opencorpora::OpencorporaTagReg,
-};
+use crate::analyzer::MorphAnalyzer;
+use crate::container::abc::*;
+use crate::container::affix::{Affix, AffixKind};
+use crate::container::decode::*;
+use crate::container::paradigm::ParadigmId;
+use crate::container::stack::StackSource;
+use crate::container::{Lex, Score};
+use crate::opencorpora::OpencorporaTagReg;
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct StackAffix {

@@ -1,12 +1,10 @@
-use std::{
-    borrow::Cow,
-    collections::{BTreeMap, HashMap, HashSet},
-    fmt,
-    fs::File,
-    io::Read,
-    iter::FromIterator,
-    path::{Path, PathBuf},
-};
+use std::borrow::Cow;
+use std::collections::{BTreeMap, HashMap, HashSet};
+use std::fmt;
+use std::fs::File;
+use std::io::Read;
+use std::iter::FromIterator;
+use std::path::{Path, PathBuf};
 
 use byteorder::{LittleEndian, ReadBytesExt};
 use flate2::read::GzDecoder;
@@ -14,18 +12,13 @@ use maplit::hashset;
 use serde_json;
 use serde_json::Value;
 
+use crate::container::paradigm::{ParadigmId, ParadigmIndex};
+use crate::dawg::{CompletionDawg, Dawg};
 pub use crate::dawg::{HH, HHH};
-
-use crate::{
-    container::paradigm::{ParadigmId, ParadigmIndex},
-    dawg::{CompletionDawg, Dawg},
-    opencorpora::{
-        grammeme::{Grammeme, GrammemeReg},
-        paradigm::ParadigmEntry,
-        tag::OpencorporaTagReg,
-    },
-    util::DumbProfiler,
-};
+use crate::opencorpora::grammeme::{Grammeme, GrammemeReg};
+use crate::opencorpora::paradigm::ParadigmEntry;
+use crate::opencorpora::tag::OpencorporaTagReg;
+use crate::util::DumbProfiler;
 
 pub type WordsDawg = CompletionDawg<HH>;
 pub type PredictionSuffixesDawg = CompletionDawg<HHH>;
@@ -162,13 +155,10 @@ impl Dictionary {
             let mut grammeme_metas = HashMap::<Grammeme, GrammemeMeta>::default();
             for (index, grammeme) in grammemes.keys().enumerate() {
                 if !grammeme_metas.contains_key(grammeme) {
-                    grammeme_metas.insert(
-                        grammeme.clone(),
-                        GrammemeMeta {
-                            index,
-                            ..GrammemeMeta::default()
-                        },
-                    );
+                    grammeme_metas.insert(grammeme.clone(), GrammemeMeta {
+                        index,
+                        ..GrammemeMeta::default()
+                    });
                 }
             }
             for (grammeme, gram_reg) in &grammemes {

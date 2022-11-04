@@ -51,38 +51,23 @@ impl Affix {
     }
 
     pub fn is_known_suffix(&self) -> bool {
-        match self.kind {
-            KnownSuffix => true,
-            _ => false,
-        }
+        matches!(self.kind, KnownSuffix)
     }
 
     pub fn is_known_prefix(&self) -> bool {
-        match self.kind {
-            KnownPrefix => true,
-            _ => false,
-        }
+        matches!(self.kind, KnownPrefix)
     }
 
     pub fn is_unknown_prefix(&self) -> bool {
-        match self.kind {
-            UnknownPrefix => true,
-            _ => false,
-        }
+        matches!(self.kind, UnknownPrefix)
     }
 
     pub fn is_prefix(&self) -> bool {
-        match self.kind {
-            KnownPrefix | UnknownPrefix => true,
-            _ => false,
-        }
+        matches!(self.kind, KnownPrefix | UnknownPrefix)
     }
 
     pub fn is_suffix(&self) -> bool {
-        match self.kind {
-            KnownPrefix | UnknownPrefix => false,
-            _ => true,
-        }
+        !matches!(self.kind, KnownPrefix | UnknownPrefix)
     }
 
     pub fn title_rus(&self) -> &'static str {

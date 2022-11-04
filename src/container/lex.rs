@@ -1,10 +1,13 @@
-use std::{borrow::Cow, fmt};
+use std::borrow::Cow;
+use std::fmt;
 
-use crate::{
-    analyzer::MorphAnalyzer,
-    container::{abc::*, decode::*, paradigm::ParadigmId, stack::StackParticle, Score, Seen},
-    opencorpora::{GrammemeSet, OpencorporaTagReg},
-};
+use crate::analyzer::MorphAnalyzer;
+use crate::container::abc::*;
+use crate::container::decode::*;
+use crate::container::paradigm::ParadigmId;
+use crate::container::stack::StackParticle;
+use crate::container::{Score, Seen};
+use crate::opencorpora::{GrammemeSet, OpencorporaTagReg};
 
 pub type Lexeme = Vec<Lex>;
 
@@ -18,7 +21,7 @@ impl Lex {
     where
         S: AsRef<str>,
     {
-        Ok(Self::decode(id.as_ref()).map(|(_, lex)| lex)?)
+        Self::decode(id.as_ref()).map(|(_, lex)| lex)
     }
 
     pub fn from_stack<S>(_morph: &MorphAnalyzer, stack: S) -> Self
@@ -45,7 +48,7 @@ impl Lex {
         }
     }
 
-    pub fn get_plural<'m>(&self, morph: &'m MorphAnalyzer, num: usize) -> Option<Lex> {
+    pub fn get_plural(&self, morph: &MorphAnalyzer, num: usize) -> Option<Lex> {
         self.inflect(morph, &self.get_tag(morph).numeral_agreement_grammemes(num))
     }
 

@@ -1,9 +1,16 @@
-use std::{collections::BTreeMap, fs::File, io::Read, marker::PhantomData, path::Path};
+use std::collections::BTreeMap;
+use std::fs::File;
+use std::io::Read;
+use std::marker::PhantomData;
+use std::path::Path;
 
 use base64;
 use flate2::read::GzDecoder;
 
-use crate::dawg::{completer::Completer, dictionary::Dictionary, guide::Guide, value::DawgValue};
+use crate::dawg::completer::Completer;
+use crate::dawg::dictionary::Dictionary;
+use crate::dawg::guide::Guide;
+use crate::dawg::value::DawgValue;
 
 const PAYLOAD_SEPARATOR: &str = "\x01";
 
@@ -160,7 +167,7 @@ where
         while let Some(key) = completer.next_key() {
             log::trace!(r#"DAWG::value_for_index_(...); key: "{:?}" "#, key);
             let value = V::new_in_place(move |buf| {
-                let decoded = base64::decode_config_slice(&key, base64::STANDARD, buf).unwrap();
+                let decoded = base64::decode_config_slice(key, base64::STANDARD, buf).unwrap();
                 log::trace!(r#"DAWG::value_for_index_(...); bytes: {:?} "#, buf);
                 assert_eq!(decoded, buf.len());
             });

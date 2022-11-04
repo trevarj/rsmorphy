@@ -1,10 +1,8 @@
-use crate::{
-    analyzer::{units::abc::AnalyzerUnit, MorphAnalyzer},
-    container::{
-        stack::StackSource, Dictionary, Lex, ParseResult, Parsed, Score, SeenSet, WordStruct,
-    },
-    dawg::HH,
-};
+use crate::analyzer::units::abc::AnalyzerUnit;
+use crate::analyzer::MorphAnalyzer;
+use crate::container::stack::StackSource;
+use crate::container::{Dictionary, Lex, ParseResult, Parsed, Score, SeenSet, WordStruct};
+use crate::dawg::HH;
 
 const DICT_SCORE: Score = Score::Real(1.0);
 

@@ -1,12 +1,12 @@
-use std::{borrow::Cow, collections::BTreeSet, iter::FromIterator};
+use std::borrow::Cow;
+use std::collections::BTreeSet;
+use std::iter::FromIterator;
 
-use crate::{
-    analyzer::{units::abc::AnalyzerUnit, MorphAnalyzer},
-    container::{
-        stack::StackSource, Initials, InitialsKind, Lex, ParseResult, Parsed, Score, SeenSet,
-    },
-    opencorpora::OpencorporaTagReg,
-};
+use crate::analyzer::units::abc::AnalyzerUnit;
+use crate::analyzer::MorphAnalyzer;
+use crate::container::stack::StackSource;
+use crate::container::{Initials, InitialsKind, Lex, ParseResult, Parsed, Score, SeenSet};
+use crate::opencorpora::OpencorporaTagReg;
 
 lazy_static::lazy_static! {
     #[derive(Debug)]

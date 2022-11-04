@@ -1,16 +1,14 @@
-use std::{borrow::Cow, fmt};
+use std::borrow::Cow;
+use std::fmt;
 
-use crate::{
-    analyzer::MorphAnalyzer,
-    container::{
-        abc::*,
-        decode::*,
-        paradigm::{ParadigmId, ParadigmIndex},
-        stack::StackSource,
-        Lex, Score, WordStruct,
-    },
-    opencorpora::{paradigm::ParadigmEntry, tag::OpencorporaTagReg},
-};
+use crate::analyzer::MorphAnalyzer;
+use crate::container::abc::*;
+use crate::container::decode::*;
+use crate::container::paradigm::{ParadigmId, ParadigmIndex};
+use crate::container::stack::StackSource;
+use crate::container::{Lex, Score, WordStruct};
+use crate::opencorpora::paradigm::ParadigmEntry;
+use crate::opencorpora::tag::OpencorporaTagReg;
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct Dictionary {
@@ -138,33 +136,39 @@ impl MorphySerde for Dictionary {
         Ok(())
     }
 
-    /**
-        ```
-        use rsmorphy::container::Dictionary;
-        use rsmorphy::container::WordStruct;
-        use rsmorphy::container::abc::*;
-
-        assert_eq!(
-            Dictionary::decode(r"d:сталь,d"),
-            Ok(("", Dictionary::new(WordStruct::new("сталь", true), 0xd_u16, 0_u16)))
-        );
-
-        assert_eq!(
-            Dictionary::decode(r"d:стали,d,1"),
-            Ok(("", Dictionary::new(WordStruct::new("стали", true), 0xd_u16, 1_u16)))
-        );
-
-        assert_eq!(
-            Dictionary::decode(r"f:бутявкает,2cb,9"),
-            Ok(("", Dictionary::new(WordStruct::new("бутявкает", false), 0x2cb_u16, 9_u16)))
-        );
-
-        assert_eq!(
-            Dictionary::decode(r"d:стали"),
-            Err(DecodeError::UnexpectedEnd)
-        );
-        ```
-    */
+    /// ```
+    /// use rsmorphy::container::abc::*;
+    /// use rsmorphy::container::{Dictionary, WordStruct};
+    ///
+    /// assert_eq!(
+    ///     Dictionary::decode(r"d:сталь,d"),
+    ///     Ok((
+    ///         "",
+    ///         Dictionary::new(WordStruct::new("сталь", true), 0xd_u16, 0_u16)
+    ///     ))
+    /// );
+    ///
+    /// assert_eq!(
+    ///     Dictionary::decode(r"d:стали,d,1"),
+    ///     Ok((
+    ///         "",
+    ///         Dictionary::new(WordStruct::new("стали", true), 0xd_u16, 1_u16)
+    ///     ))
+    /// );
+    ///
+    /// assert_eq!(
+    ///     Dictionary::decode(r"f:бутявкает,2cb,9"),
+    ///     Ok((
+    ///         "",
+    ///         Dictionary::new(WordStruct::new("бутявкает", false), 0x2cb_u16, 9_u16)
+    ///     ))
+    /// );
+    ///
+    /// assert_eq!(
+    ///     Dictionary::decode(r"d:стали"),
+    ///     Err(DecodeError::UnexpectedEnd)
+    /// );
+    /// ```
     fn decode(s: &str) -> Result<(&str, Self), DecodeError> {
         let (s, is_known) = follow_str(s, "d")
             .map(|s| (s, true))

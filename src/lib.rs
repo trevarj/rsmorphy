@@ -4,9 +4,6 @@
 #![allow(clippy::items_after_statements)]
 #![allow(clippy::match_bool)]
 #![allow(clippy::module_inception)]
-// TODO post a bug report; https://github.com/Manishearth/rust-clippy/wiki#regex_macro
-// false positive, this regex macro implemented in this crate and is not available in the upstream anymore
-#![allow(clippy::regex_macro)]
 
 #[macro_use]
 pub mod macros;
@@ -22,11 +19,8 @@ pub mod util;
 
 pub mod prelude;
 
-pub use crate::{
-    analyzer::{units::abc::AnalyzerUnit, MorphAnalyzer},
-    container::{
-        abc::{MorphySerde, Source},
-        Lex, ParseResult, Parsed, Score,
-    },
-    opencorpora::{Grammeme, GrammemeSet},
-};
+pub use crate::analyzer::units::abc::AnalyzerUnit;
+pub use crate::analyzer::MorphAnalyzer;
+pub use crate::container::abc::{MorphySerde, Source};
+pub use crate::container::{Lex, ParseResult, Parsed, Score};
+pub use crate::opencorpora::{Grammeme, GrammemeSet};

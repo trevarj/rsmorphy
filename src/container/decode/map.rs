@@ -1,7 +1,5 @@
-use std::{
-    num::{ParseFloatError, ParseIntError},
-    str::FromStr,
-};
+use std::num::{ParseFloatError, ParseIntError};
+use std::str::FromStr;
 
 use num::Num;
 
