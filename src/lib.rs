@@ -19,6 +19,8 @@ pub mod util;
 
 pub mod prelude;
 
+pub use dict_ru;
+
 pub use crate::analyzer::units::abc::AnalyzerUnit;
 pub use crate::analyzer::MorphAnalyzer;
 pub use crate::container::abc::{MorphySerde, Source};
